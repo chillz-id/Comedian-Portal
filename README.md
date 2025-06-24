@@ -223,4 +223,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ---
 
-**Built with ❤️ for the Sydney Comedy Community**
+**Built with ❤️ for the Sydney Comedy Community** **Add proper Next.js folder structure**
