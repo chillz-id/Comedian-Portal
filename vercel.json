@@ -1,0 +1,19 @@
+{
+  "name": "standup-sydney-portal",
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "env": {
+    "NEXT_PUBLIC_WIX_CLIENT_ID": "@wix_client_id",
+    "NEXT_PUBLIC_WIX_SITE_ID": "@wix_site_id"
+  },
+  "functions": {
+    "pages/api/**/*.js": {
+      "runtime": "nodejs18.x"
+    }
+  }
+}

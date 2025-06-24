@@ -1,0 +1,209 @@
+STANDUP SYDNEY PORTAL - COMPLETE PROJECT FILES
+=====================================================
+
+📁 PROJECT STRUCTURE:
+standup-sydney-portal/
+├── package.json
+├── next.config.js
+├── tailwind.config.js
+├── postcss.config.js
+├── tsconfig.json
+├── vercel.json
+├── .gitignore
+├── .env.local.example
+├── README.md
+├── deploy.sh
+├── pages/
+│   ├── _app.tsx
+│   └── index.tsx
+└── styles/
+    └── globals.css
+
+=== FILE 1: package.json ===
+{
+  "name": "standup-sydney-portal",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@wix/sdk": "^1.12.5",
+    "@wix/redirects": "^1.0.0",
+    "@wix/members": "^1.0.0",
+    "@wix/data": "^1.0.0",
+    "@wix/authentication": "^1.0.0",
+    "next": "14.2.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^3.4.3",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "@types/react": "^18.3.2",
+    "@types/react-dom": "^18.3.0",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.3",
+    "typescript": "^5.4.5"
+  }
+}
+
+=== FILE 2: next.config.js ===
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
+  images: {
+    domains: ['static.wixstatic.com', 'images.unsplash.com'],
+  },
+  env: {
+    WIX_CLIENT_ID: process.env.WIX_CLIENT_ID,
+    WIX_SITE_ID: process.env.WIX_SITE_ID,
+  },
+}
+
+module.exports = nextConfig
+
+=== FILE 3: .env.local.example ===
+# WIX Configuration
+NEXT_PUBLIC_WIX_CLIENT_ID=a50c7850-dcd6-4184-b9ad-957b5f2f239c
+NEXT_PUBLIC_WIX_SITE_ID=9b8ae25f-875a-4476-8700-919aa1191a37
+
+# Production URLs (update these for your domain)
+NEXT_PUBLIC_SITE_URL=https://your-comedian-portal.vercel.app
+
+=== FILE 4: tailwind.config.js ===
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        'brand-purple': '#6366f1',
+        'brand-blue': '#3b82f6',
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic':
+          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      },
+    },
+  },
+  plugins: [],
+}
+
+=== FILE 5: postcss.config.js ===
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+}
+
+=== FILE 6: tsconfig.json ===
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "es6"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}
+
+=== FILE 7: .gitignore ===
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# Testing
+/coverage
+
+# Next.js
+/.next/
+/out/
+
+# Production
+/build
+
+# Misc
+.DS_Store
+*.pem
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local env files
+.env*.local
+.env
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+logs
+*.log
+
+=== FILE 8: vercel.json ===
+{
+  "name": "standup-sydney-portal",
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "env": {
+    "NEXT_PUBLIC_WIX_CLIENT_ID": "@wix_client_id",
+    "NEXT_PUBLIC_WIX_SITE_ID": "@wix_site_id"
+  },
+  "functions": {
+    "pages/api/**/*.js": {
+      "runtime": "nodejs18.x"
+    }
+  }
+}
+
+=== CONTINUE TO NEXT FILES... ===
